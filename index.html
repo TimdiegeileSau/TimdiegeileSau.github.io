@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Tim Wimmer Fanpage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .dropdown {
+      margin: 20px auto;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .dropdown select {
+      font-size: 16px;
+      padding: 10px;
+      width: 250px;
+    }
+
+    .content {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Tim Wimmer Fanpage</h1>
+
+  <div class="dropdown">
+    <label for="menu1"><strong>Wähle ein Thema:</strong></label><br>
+    <select id="menu1" onchange="showContent()">
+      <option value="">-- bitte wählen --</option>
+      <option value="warum">Warum Tim Wimmer so geil ist</option>
+      <option value="steckbrief">Steckbrief</option>
+    </select>
+  </div>
+
+  <div id="warum" class="content">
+    <h2>Warum Tim Wimmer so geil ist</h2>
+    <p>Tim Wimmer ist nicht nur ein herausragender Handballspieler, sondern auch ein echtes Original.</p>
+    <p>Sein Kampfgeist, seine Loyalität und sein legendärer Humor machen ihn einzigartig.</p>
+    <p>Ob auf dem Spielfeld oder daneben – Tim rockt einfach alles!</p>
+  </div>
+
+  <div id="steckbrief" class="content">
+    <h2>Steckbrief</h2>
+    <p><strong>Geburtstag:</strong> 12. Juli 2009</p>
+    <p><strong>Sport:</strong> Handball</p>
+    <p><strong>Verein:</strong> TSV Trudering</p>
+    <p>Ein treues Vereinsmitglied seit Beginn seiner Karriere.</p>
+  </div>
+
+  <script>
+    function showContent() {
+      document.getElementById("warum").style.display = "none";
+      document.getElementById("steckbrief").style.display = "none";
+
+      const value = document.getElementById("menu1").value;
+      if (value) {
+        document.getElementById(value).style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
