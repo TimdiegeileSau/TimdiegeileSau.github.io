@@ -38,6 +38,38 @@
       margin-right: auto;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
+
+    .comment-section {
+      margin-top: 40px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    .comment {
+      text-align: left;
+      margin-top: 10px;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 5px;
+    }
+
+    .comment strong {
+      color: #333;
+    }
   </style>
 </head>
 <body>
@@ -68,6 +100,15 @@
     <p>Ein treues Vereinsmitglied seit Beginn seiner Karriere.</p>
   </div>
 
+  <div class="comment-section">
+    <h2>Kommentare</h2>
+    <input type="text" id="username" placeholder="Dein Name">
+    <textarea id="commentText" rows="4" placeholder="Dein Kommentar..."></textarea>
+    <button onclick="addComment()">Kommentieren</button>
+
+    <div id="comments"></div>
+  </div>
+
   <script>
     function showContent() {
       document.getElementById("warum").style.display = "none";
@@ -77,6 +118,26 @@
       if (value) {
         document.getElementById(value).style.display = "block";
       }
+    }
+
+    function addComment() {
+      const username = document.getElementById("username").value.trim();
+      const commentText = document.getElementById("commentText").value.trim();
+
+      if (!username || !commentText) {
+        alert("Bitte Namen und Kommentar eingeben.");
+        return;
+      }
+
+      const commentBox = document.getElementById("comments");
+      const commentDiv = document.createElement("div");
+      commentDiv.className = "comment";
+      commentDiv.innerHTML = `<strong>${username}</strong>: ${commentText}`;
+      commentBox.prepend(commentDiv);
+
+      // Eingabefelder leeren
+      document.getElementById("username").value = "";
+      document.getElementById("commentText").value = "";
     }
   </script>
 
